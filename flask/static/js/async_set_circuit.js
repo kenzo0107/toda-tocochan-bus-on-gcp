@@ -2,7 +2,7 @@ var current_circuit_id;
 $(function(){
 
   function displayCircuitBlock(circuit_id) {
-    var blocksCircuit = $('#blocks-circuit');
+    var blocksCircuit = $('#block-stations');
     blocksCircuit.hide();
     $('.block-circuit').each(function(k,v){
       var cid = $(this).data('circuit_id');
@@ -12,6 +12,10 @@ $(function(){
         $(this).hide();
       }
       blocksCircuit.show();
+
+      var position = blocksCircuit.offset().top;
+      var speed = 500; // ミリ秒で記述
+      $('body,html').animate({scrollTop:position}, speed, 'swing');
     });
   }
 
@@ -22,6 +26,7 @@ $(function(){
 
     if (current_circuit_id == circuit_id) {
       console.log('You select same circuit_id.');
+      displayCircuitBlock(circuit_id);
       return;
     }
 
@@ -41,11 +46,6 @@ $(function(){
             console.log("success");
             current_circuit_id = circuit_id;
             displayCircuitBlock(circuit_id);
-
-            var target = $('#blocks-circuit');
-            var position = target.offset().top;
-            var speed = 500; // ミリ秒で記述
-            $('body,html').animate({scrollTop:position}, speed, 'swing');
             return false;
           }
         } else {
