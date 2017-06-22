@@ -25,16 +25,17 @@
         <p><button id="select_circuit" type="button" class="btn btn-secondary btn-lg btn-block">この循環を選択する</button></p>
       </div>
 
-      <div id="blocks-circuit">
+      <div id="block-stations">
         <div>&nbsp;</div>
         <div>&nbsp;</div>
         <div>&nbsp;</div>
         <h4>停留所を選択してください</h4>
 
-        {% for cid in circuits %}
-        <div class="table-responsive block-circuit" data-circuit_id="{{ circuits[cid].id }}" {% if cid != circuit_id %}style="display:none;"{% endif %}>
+        {% for cid in time_tables %}
+        <div class="block-circuit table-responsive" data-circuit_id="{{ cid }}" {% if cid != circuit_id %}style="display:none;"{% endif %}>
           <h4>{{ circuits[cid].name }}循環</h4>
-          <span class="text-danger">※{{ defaults.exclude_hours|join(',') }}時台は運行しません</span>
+          {% set exclude_hours = time_tables[cid].exclude_hours %}
+          <span class="text-danger">※{{ exclude_hours|join(',') }}時台は運行しません</span>
           <table class="table table-striped">
             <thead>
               <tr>
@@ -45,11 +46,16 @@
             </thead>
 
             <tbody>
-              {% for id in time_tables[circuits[cid].id] %}
+              {% set stations = time_tables[cid].stations %}
+              {% for sid in stations %}
               <tr>
-                <td>{{ time_tables[circuits[cid].id][id].station }}</td>
-                <td>{{ time_tables[circuits[cid].id][id].arrived_at }}</td>
-                <td><button type="button" class="btn btn-outline-success set_station_id" data-station_id="{{ id }}">選択</button></td>
+                <td>{{ stations[sid].name }}</td>
+                <td>{{ stations[sid].arrived_at }}</td>
+                <td>
+                  <a href="/ts?circuit_id={{ cid }}&station_id={{ sid }}">
+                    <button type="button" class="btn btn-outline-success set_station_id" data-station_id="{{ sid }}">選択</button>
+                  </a>
+                </td>
               </tr>
               {% endfor %}
             </tbody>
@@ -61,27 +67,10 @@
 
       <div>&nbsp;</div>
       <div>&nbsp;</div>
-
-      <div id="block-station" style="display:none;">
-        <h3>
-          {{ circuits[circuit_id].name }}循環
-          <span class="station"></span>
-        </h3>
-
-        {% if next_time_tables|length == 0 %}
-          <h4><span>本日のバスは終了しました。</span></h4>
-        {% else %}
-          <div id="flickity">
-            <ul class="js-flickity">
-              {% for next_arrived_at in next_time_tables %}
-              <li class="slide timetable" data-time="{{ next_arrived_at }}"><span></span></li>
-              {% endfor %}
-            </ul>
-          </div>
-        {% endif %}
-      </div>
     </div>
   </div>
 </div>
 
+
+<script src="/static/js/async_set_circuit.js"></script>
 {% endblock %}
