@@ -1,22 +1,13 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-  <a class="navbar-brand" href="#">toco ちゃんバス あと何分？</a>
-</nav>
-
-<div>&nbsp;</div>
-<div>&nbsp;</div>
-<div>&nbsp;</div>
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-12">
 
       <div id="block-station">
-        <h3>
-          {{ circuit.name }}循環 ({{ station.name }})
-        </h3>
+        <h3>{{ circuit.name }}循環</h3>
+        <span>{{ station.name }}</span>
 
         {% if next_time_tables|length == 0 %}
           <h4><span>本日のバスは終了しました。</span></h4>
@@ -29,7 +20,16 @@
             </ul>
           </div>
         {% endif %}
-        <p><a href="/"><button type="button" class="btn btn-outline btn-lg btn-block">選択し直す</button></a></p>
+        <p>
+          <a href="/ts?circuit_id={{ circuit.id }}&station_id={{ station.id }}">
+            <button type="button" class="btn btn-primary btn-lg btn-block">更新</button>
+          </a>
+        </p>
+        <p>
+          <a href="/">
+            <button type="button" class="btn btn-secondary btn-lg btn-block">選択し直す</button>
+          </a>
+        </p>
       </div>
     </div>
   </div>
