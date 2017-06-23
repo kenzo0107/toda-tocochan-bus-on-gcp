@@ -1,14 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-  <a class="navbar-brand" href="#">toco ちゃんバス あと何分？</a>
-</nav>
-
-<div>&nbsp;</div>
-<div>&nbsp;</div>
-<div>&nbsp;</div>
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-12">
@@ -33,14 +25,14 @@
 
         {% for cid in time_tables %}
         <div class="block-circuit table-responsive" data-circuit_id="{{ cid }}" {% if cid != circuit_id %}style="display:none;"{% endif %}>
-          <h4>{{ circuits[cid].name }}循環</h4>
           {% set exclude_hours = time_tables[cid].exclude_hours %}
+          {% if exclude_hours|length > 0 %}
           <span class="text-danger">※{{ exclude_hours|join(',') }}時台は運行しません</span>
+          {% endif %}
           <table class="table table-striped">
             <thead>
               <tr>
-                <th>停留所</th>
-                <th>到着時刻</th>
+                <th>{{ circuits[cid].name }}循環</th>
                 <th></th>
               </tr>
             </thead>
@@ -50,7 +42,6 @@
               {% for sid in stations %}
               <tr>
                 <td>{{ stations[sid].name }}</td>
-                <td>{{ stations[sid].arrived_at }}</td>
                 <td>
                   <a href="/ts?circuit_id={{ cid }}&station_id={{ sid }}">
                     <button type="button" class="btn btn-outline-success set_station_id" data-station_id="{{ sid }}">選択</button>
