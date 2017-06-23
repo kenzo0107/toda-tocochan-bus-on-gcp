@@ -20,7 +20,16 @@
             </ul>
           </div>
         {% endif %}
-        <p><a href="/"><button type="button" class="btn btn-secondary btn-lg btn-block">選択し直す</button></a></p>
+        <p>
+          <a href="/ts?circuit_id={{ circuit.id }}&station_id={{ station.id }}">
+            <button type="button" class="btn btn-primary btn-lg btn-block">更新</button>
+          </a>
+        </p>
+        <p>
+          <a href="/">
+            <button type="button" class="btn btn-secondary btn-lg btn-block">選択し直す</button>
+          </a>
+        </p>
       </div>
     </div>
   </div>

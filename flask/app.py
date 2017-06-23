@@ -47,8 +47,8 @@ def timetable():
     return render_template(
         "timetable.html",
         circuit=circuit,
-        next_time_tables=next_time_tables,
-        station=station
+        station=station,
+        next_time_tables=next_time_tables
     )
 
 @app.route('/circuit', methods=['POST'])

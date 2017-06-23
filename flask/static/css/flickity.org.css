@@ -14,6 +14,7 @@
   background:#DCDCDC;
   border:0px solid #fff;
   color:#fff;
+  height: 50vw;
 }
 #flickity ul li.slide span {
   text-align:center;
