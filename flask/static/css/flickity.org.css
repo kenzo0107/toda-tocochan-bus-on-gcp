@@ -9,7 +9,7 @@
 #flickity ul li.slide {
   width:100%;
   text-align:center;
-  padding:150px 0px 150px;
+  padding:100px 0px 150px;
   margin:0 0;
   background:#DCDCDC;
   border:0px solid #fff;
@@ -49,7 +49,7 @@
 
 .flickity-prev-next-button {
   position: absolute;
-  top:50%;
+  top:70%;
   width:44px;
   height:44px;
   border:none;

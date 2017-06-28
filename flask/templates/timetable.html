@@ -15,7 +15,9 @@
           <div id="flickity">
             <ul class="js-flickity">
               {% for next_arrived_at in next_time_tables %}
-              <li class="slide timetable" data-time="{{ next_arrived_at }}" style="background:{{ circuit.bgcolor }}"><span></span></li>
+              <li class="slide timetable" data-time="{{ next_arrived_at }}" style="background:{{ circuit.bgcolor }}">
+                <span></span>
+              </li>
               {% endfor %}
             </ul>
           </div>
