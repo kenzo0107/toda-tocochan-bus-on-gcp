@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+  <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-success">
     <a class="navbar-brand" href="/"><img src="/static/img/logo.jpg" height="30px" /> toco ちゃんバス あと何分？</a>
   </nav>
 
@@ -21,6 +21,16 @@
   <div>&nbsp;</div>
 
   {% block content %}{% endblock %}
+
+  <div>&nbsp;</div>
+  <div>&nbsp;</div>
+  <div>&nbsp;</div>
+
+  <nav class="navbar navbar-toggleable-md navbar-inverse fixed-bottom" role="navigation" style="background-color: #D8F781;">
+    <div class="container">
+      <span style="font-size:10px;color:#848484;">バス事業者公式アプリではありません。事業者様へお問合せしません様、お願い致します。</span>
+    </div>
+  </nav>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
