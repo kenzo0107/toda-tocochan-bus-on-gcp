@@ -15,6 +15,7 @@
           {% endfor %}
         </ul>
         <p><button id="select_circuit" type="button" class="btn btn-secondary btn-lg btn-block">この循環を選択する</button></p>
+        <p><a href="https://www.city.toda.saitama.jp/uploaded/attachment/18038.pdf" target="_blank" class="btn btn-info btn-lg btn-block" role="button" aria-pressed="true">路線図（PDF／4.53MB）</a></p>
       </div>
 
       <div id="block-stations">
@@ -43,9 +44,7 @@
               <tr>
                 <td>{{ stations[sid].name }}</td>
                 <td>
-                  <a href="/ts?circuit_id={{ cid }}&station_id={{ sid }}">
-                    <button type="button" class="btn btn-outline-success set_station_id" data-station_id="{{ sid }}">選択</button>
-                  </a>
+                  <a href="/ts?circuit_id={{ cid }}&station_id={{ sid }}" role="button" aria-pressed="true" class="btn btn-outline-success set_station_id">選択</a>
                 </td>
               </tr>
               {% endfor %}
