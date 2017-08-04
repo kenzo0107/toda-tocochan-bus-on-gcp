@@ -10,7 +10,7 @@ spec:
         name: tocochan
     spec:
       containers:
-        - image: gcr.io/mametsubuservice/tocochan:latest
+        - image: gcr.io/mametsubuservice-175801/tocochan:v0.0.1
           imagePullPolicy: Always
           name: tocochan
 ---

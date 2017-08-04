@@ -1,9 +1,9 @@
-apiVersion: v1 
+apiVersion: v1
 kind: Pod
 metadata:
   name: tocochan
 spec:
   containers:
-    - image: gcr.io/mametsubuservice/tocochan:latest
+    - image: gcr.io/mametsubuservice-175801/tocochan:latest
       imagePullPolicy: Always
       name: tocochan
